@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+         body {
+            background-image: url('https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: rgb(14, 12, 12);
+        }
+
+        .nav li {
+            float: right;
+            list-style: none;
+        }
+
+        .nav a {
+            list-style: none;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1rem;
+            font-weight: 550;
+            display: block;
+            padding: 5px 35px;
+            color: rgb(201, 249, 12);
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background: rgba(21, 10, 12, 0.401);}
+
+
+        .content {
+            width: 100%;
+            position: absolute;
+            top: 45%;
+            text-align: center;
+            color: white;
+        }
+
+        .artist-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .artist {
+            background: rgba(255, 255, 255, 0.458);
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .artist h2 {
+            color: rgb(31, 10, 14);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .artist ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .artist ul li {
+            font-size: 1rem;
+            color: black;
+        }
+        li:hover, li.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="audioPlayer" controls style="display:none;"></audio>
+    <script src="script.js"></script>
+    <script>
+        let currentPlaying = null;
+        
+        function togglePlay(element, songPath) {
+            let audioPlayer = document.getElementById("audioPlayer");
+            
+            if (currentPlaying === element) {
+                if (!audioPlayer.paused) {
+                    audioPlayer.pause();
+                    element.classList.remove("active");
+                } else {
+                    audioPlayer.play();
+                    element.classList.add("active");
+                }
+            } else {
+                if (currentPlaying) {
+                    currentPlaying.classList.remove("active");
+                }
+                currentPlaying = element;
+                audioPlayer.src = songPath;
+                audioPlayer.play();
+                element.classList.add("active");
+            }
+        }
+    </script>
+    <div class="container">
+        <ul class="nav">
+            <li><a href="#" id="logoutLink">LOGOUT</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="artist.html">ARTISTS</a></li>
+            <li><a href="music.html">MUSIC</a></li>
+            <li><a href="login.html">LOGIN</a></li>
+            <li><a href="home.html">HOME</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Featured Artists</h1>
+        <div class="artist-container">
+            <div class="artist">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2wQi_hOm9J-eAljatY8dkXfW7o_q7YPEWC-_hGnBjcB2usu56RXAK15R9R4GbJZojMSw&usqp=CAU" alt="Song Cover">
+                <h2>Anirudh</h2>
+                <ul>
+                    <li onclick="togglePlay(this,'playlist/[iSongs.info] 02 - Gaali Vaaluga.mp3')">Gaali Vaaluga</li>
+                    <li onclick="togglePlay(this,'playlist/[iSongs.info] 01 - The Karma Theme.mp3')">The karma Theme</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 05 - Luckkanna Mate Nillu.mp3')">Luckkanna Mate Nillu</li>
+                    <li onclick="togglePlay(this, 'playlist/Thangamagan - Enna Solla Lyric _ Anirudh Ravichander _ Dhanush.m4a')">Enna Solla</li>
+                    <li onclick="togglePlay(this, 'playlist/Dheema - Masstamilan.mp3')">Dheema Dheema</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 02 - Kollagotte.mp3')">Kollagottey</li>
+                    <li onclick="togglePlay(this, 'playlist/Hukum Tiger - Masstamilan.mp3')">Hukum</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 01 - Master Coming.mp3')">Master Coming</li>
+                </ul>
+            </div>
+            <div class="artist">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDZB-uYKghbeHZLa5ZpRExBRML-PSvCzzg-ES27tv6N0ktQC2TDtkpOlyVMqIYxkgm03w&usqp=CAU" alt="Song Cover">
+                <h2>Shreya Ghoshal</h2>
+                <ul>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 02 - Sooseki.mp3')">Sooseki</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 02 - Digu Digu Digu Naaga.mp3')">Digu Digu Digu Naaga</li>
+                    <li onclick="togglePlay(this, 'playlist/Tujh Mein Rab Dikhta Hai _ Female Version _ Rab Ne Bana Di Jodi, SRK, Anushka Sharma, Shreya Ghoshal.m4a')">Tujhme Rab Dikhta Hai</li>
+                    <li onclick="togglePlay(this, 'playlist/Chaudhavi Shab _ Video Song _ Sanjay Leela Bhansali _ Shreya Ghoshal _ Heeramandi _ Bhansali Music.m4a')">Chaudhavi Shab</li>
+                    <li onclick="togglePlay(this, 'playlist/Chikni Chameli Best Video - Agneepath _ Katrina, Hrithik _ Shreya _ Ajay-Atul.m4a')">Chikni Chameli</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 01 - Itu Itu Ani Chitikelu Evvarivo.mp3')">Itu Itu AniChitikelu Evvarivo</li>
+                </ul>
+            </div>
+            <div class="artist">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNmjkdULf4Dy6MXJKmOvfwVy3kgN4t2bzdRg&s" alt="Song Cover">
+                <h2>Karthik</h2>
+                <ul>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 02 - Ram Sita Ram.mp3')">Ram Sita Ram</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 01 - Niluvadhamu Ninu Epudaina.mp3')">Niluvaddham</li>
+                    <li onclick="togglePlay(this, 'playlist/Beautiful Girl Full Video Song - Life is Beautiful Movie Video Songs.m4a')">Beautiful Girl</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 02 - Chilipiga.mp3')">Chilipiga</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 04 - Priya Mithunam.mp3')">Priya Mithunam</li>
+                    <li onclick="togglePlay(this, 'playlist/Usurey poguthu Song lyrics in தமிழ் _AR Rahman _Ravanan _Tamil Entertain_.m4a')">Usurey Pogudhey</li>
+                    <li onclick="togglePlay(this, 'playlist/NaaNaa Hyraanaa - Lyrical  _ Game Changer _ Ram Charan _ Kiara _ Shreya Ghoshal_ Karthik _ Thaman.m4a')">NaaNaa Hyraanaa</li>
+                </ul>
+            </div>
+            <div class="artist">
+                <img src="https://static.toiimg.com/thumb/msid-96585261,imgsize-57974,width-400,resizemode-4/96585261.jpg" alt="Arijit Singh" style="width: 210px; height: 250px;">
+                <h2>Arjit Singh</h2>
+                <ul>
+                    <li onclick="togglePlay(this, 'playlist/kanulanu thaake (8d audio).m4a')">Kanulanu Thaake</li>
+                    <li onclick="togglePlay(this, 'playlist/Heeriye (Official Video) Jasleen Royal ft Arijit Singh_ Dulquer Salmaan_ Aditya Sharma _Taani Tanvir.m4a')">Heeriye</li>
+                    <li onclick="togglePlay(this, 'playlist/Chaleya (Lyrics) - Jawan _ Shah Rukh Khan _ Nayanthara _ Atlee, Anirudh _ Arijit Singh _ Shilpa Rao.m4a')">Chaleya</li>
+                    <li onclick="togglePlay(this, 'playlist/[iSongs.info] 04 - Anuvanuvuu.mp3')">Anuvanuvuu</li>
+                    <li onclick="togglePlay(this, 'playlist/Tere Pyaar Mein (Full Video) Tu Jhoothi Main Makkaar_ Ranbir,Shraddha_ Pritam_Arijit,Nikhita,Amitabh.m4a')">Tere Pyaar Mein</li>
+                    <li onclick="togglePlay(this, 'playlist/ANIMAL- Satranga (Lyrics) _ Arijit _ Ranbir Kapoor _ Rashmika.m4a')">Satranga</li>
+                    <li onclick="togglePlay(this, 'playlist/What Jhumka _ (Lyrics) - Rocky Aur Rani Kii Prem Kahani _ Ranveer _ Alia _ Arjit Singh _ Pritam _.m4a')">What jhumka?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
